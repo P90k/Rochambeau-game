@@ -1,3 +1,5 @@
+
+/*
 //Rock paper scissors game 
 
 //The client will play against the computer in three rounds. 
@@ -14,6 +16,10 @@
 
 // Ask client for input, rock paper or scissors? 
 
+*/
+
+
+
 // Create function GetComputerChoice, no parameters. Return the strings 'rock', 'paper' or 'scissors' at random.  
 
 function getComputerChoice() {
@@ -22,13 +28,41 @@ function getComputerChoice() {
     return choice
 } 
 
-// Compare client input to random choice. 
-
-// If equal, go again
- 
-// rock beats scissors
-// paper beats rock
-// scissors beats paper
 
 
+// Single round of rock-paper-scissors game. 
+
+function playRound(playerSelection, computerSelection)  {
+    // Make the arguments case insensitive.
+    playerSelection = playerSelection.toLowerCase()
+    computerSelection = computerSelection.toLowerCase()
+
+    if (playerSelection == computerSelection) {
+        return `The computer chose ${computerSelection}. Even!`
+    } 
+    
+    else if (playerSelection == 'rock') {
+        if (computerSelection == 'scissors') {
+            return `The computer chose ${computerSelection}. You won!`
+        } else {
+            return `The computer chose ${computerSelection}. You lost!`
+        }
+    } 
+    
+    else if (playerSelection == 'paper') {
+        if (computerSelection == 'rock') {
+            return `The computer chose ${computerSelection}. You won!`
+        } else {
+            return `The computer chose ${computerSelection}. You lost!`
+        }
+    } 
+    
+    else if (playerSelection == 'scissors') { // use "else if" to make the code more readable
+        if (computerSelection == 'paper') {
+            return `The computer chose ${computerSelection}. You won!`
+        } else {
+            return `The computer chose ${computerSelection}. You lost!`
+        }
+    }
+}
 
