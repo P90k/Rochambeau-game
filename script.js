@@ -4,6 +4,13 @@
 
 
 
+/*
+Add eventlistener to the buttons with class: playround
+*/
+
+
+
+
 // Create function GetComputerChoice, no parameters. Return the strings 'rock', 'paper' or 'scissors' at random.  
 
 function getComputerChoice() {
@@ -12,65 +19,76 @@ function getComputerChoice() {
     return choice;
 } 
 
+// PlayerChoice
+
+
 
 
 // Single round of rock-paper-scissors game. 
 
 function playRound(playerSelection, computerSelection)  {
-    // Make the arguments case insensitive.
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
+
+    const result = document.querySelector('.result')
 
     if (playerSelection == computerSelection) {
-        return `The computer chose ${computerSelection}. Even, go again!`;
+        result.textContent = `The computer chose ${computerSelection}. Even, try again!`
     } 
     
     else if (playerSelection == 'rock') {
         if (computerSelection == 'scissors') {
-            return `The computer chose ${computerSelection}. You won!`;
+            result.textContent = `The computer chose ${computerSelection}. You won!`;
+            
         } else {
-            return `The computer chose ${computerSelection}. You lost!`;
+            result.textContent = `The computer chose ${computerSelection}. You lost!`;
         }
     } 
     
     else if (playerSelection == 'paper') {
         if (computerSelection == 'rock') {
-            return `The computer chose ${computerSelection}. You won!`;
+            result.textContent = `The computer chose ${computerSelection}. You won!`;
         } else {
-            return `The computer chose ${computerSelection}. You lost!`;
+            result.textContent = `The computer chose ${computerSelection}. You lost!`;
         }
     } 
     
     else if (playerSelection == 'scissors') { // use "else if" to make the code more readable
         if (computerSelection == 'paper') {
-            return `The computer chose ${computerSelection}. You won!`;
+            result.textContent = `The computer chose ${computerSelection}. You won!`;
         } else {
-            return `The computer chose ${computerSelection}. You lost!`;
+            result.textContent = `The computer chose ${computerSelection}. You lost!`;
         }
     }
 }
 
+function listener() {
+    let playerSelection = this.textContent.toLowerCase()
+    let computerSelection = getComputerChoice()
+    playRound(playerSelection, computerSelection)
+}
+
+
+const buttons = document.querySelectorAll('.playround')
+// Loop through the nodeList with forEach method. Add eventlistener click, execute function playRound()
+buttons.forEach((button) => button.addEventListener('click', listener ))
 /* 
 game function will play a rock-paper-scissors game in a best of five between the user and computer. 
 */
 
 // Create function named game. 
-
+/*
 function game() {
     // create variable playerScore, datatype number. Initial value 0. 
-    let playerScore = 0;
-
+    let rounds = 0
     // create variable computerScore, datatype number. Initial value 0.  
-    let computerScore = 0;
 
     // Create while loop. Condition: If playerScore or computerScore isn't 3, then continue playing the game.
-    while (playerScore < 3 && computerScore < 3) {
+    while (rounds < 5) {
 
         // Create variable to store player input, ask player for input. 
-        let playerChoice = prompt('What do you choose? rock, paper or scissors? '); // This will need to be prompted to user 
+        // let playerChoice = prompt('What do you choose? rock, paper or scissors? '); // This will need to be prompted to user 
 
         // Create variable to store value of getComputerChoice function. 
-        let computerChoice = getComputerChoice();
+            let computerChoice = getComputerChoice();
 
         // Create variable to store results of round in. Call the playRound function to play a round. 
         let result = playRound(playerChoice, computerChoice);
@@ -95,6 +113,4 @@ function game() {
     }
 }
 
-game()
-
-
+*/
